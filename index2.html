@@ -1,0 +1,765 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- saved from url=(0057)https://ssc.adm.ubc.ca/sscportal/servlets/SRVSSCFramework -->
+<html><head>
+  <style type="text/css">
+    #ah1n1 {
+      background-color: green;
+      color: yellow;
+      padding: 2px 30px;
+    }
+  </style>
+
+  
+
+
+    <title>UBC Student Service Centre Version 2.0</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Expires" content="Sun, 7 May 1995 12:00:00 GMT">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <link rel="stylesheet" type="text/css" href="https://ssc.adm.ubc.ca/static/ssc/css/ssc.css?v=20191112221525" media="screen">
+    <link rel="stylesheet" type="text/css" href="https://ssc.adm.ubc.ca/static/ssc/css/sscPrint.css?v=20191112221525" media="print">
+    <link rel="stylesheet" type="text/css" href="https://ssc.adm.ubc.ca/static/shared/stylesheets/superfish.css?v=20191112221525" media="screen">
+    <link rel="stylesheet" type="text/css" href="https://ssc.adm.ubc.ca/static/shared/stylesheets/studentServiceCentre.css?v=20191112221525">
+    <link rel="stylesheet" type="text/css" href="https://ssc.adm.ubc.ca/static/admissions/stylesheets/styles.css?v=20191112221525">
+    <link rel="stylesheet" type="text/css" href="https://ssc.adm.ubc.ca/static/admissions/stylesheets/smoothness/jquery-ui-1.8.14.custom.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://ssc.adm.ubc.ca/static/ubcclf/_ubc_clf/css/clf-required-fixedwidth.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="https://ssc.adm.ubc.ca/static/ubcclf/_ubc_clf/css/clf-typography.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="https://ssc.adm.ubc.ca/static/ubcclf/_ubc_clf/css/clf-optional.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="https://ssc.adm.ubc.ca/static/ubcclf/_ubc_clf/css/clf-custom.css" media="screen">
+
+    <!--[if lte IE 7]>
+    <link rel="stylesheet" type="text/css" href="https://ssc.adm.ubc.ca/static/ubcclf/_ubc_clf/css/ie.css" media="screen" />
+    <![endif]-->
+
+    <link rel="icon" type="image/vnd.microsoft.icon" href="https://ssc.adm.ubc.ca/static/ubcclf/_ubc_clf/img/favicon.ico">
+
+    <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script type="text/javascript" src="https://ssc.adm.ubc.ca/static/shared/scripts/jquery-1.8.3.min.js"></script><script data-dapp-detection="">
+(function() {
+  let alreadyInsertedMetaTag = false
+
+  function __insertDappDetected() {
+    if (!alreadyInsertedMetaTag) {
+      const meta = document.createElement('meta')
+      meta.name = 'dapp-detected'
+      document.head.appendChild(meta)
+      alreadyInsertedMetaTag = true
+    }
+  }
+
+  if (window.hasOwnProperty('web3')) {
+    // Note a closure can't be used for this var because some sites like
+    // www.wnyc.org do a second script execution via eval for some reason.
+    window.__disableDappDetectionInsertion = true
+    // Likely oldWeb3 is undefined and it has a property only because
+    // we defined it. Some sites like wnyc.org are evaling all scripts
+    // that exist again, so this is protection against multiple calls.
+    if (window.web3 === undefined) {
+      return
+    }
+    if (!window.web3.currentProvider ||
+        !window.web3.currentProvider.isMetaMask) {
+      __insertDappDetected()
+    }
+  } else {
+    var oldWeb3 = window.web3
+    Object.defineProperty(window, 'web3', {
+      configurable: true,
+      set: function (val) {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        oldWeb3 = val
+      },
+      get: function () {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        return oldWeb3
+      }
+    })
+  }
+})()</script>
+    <script type="text/javascript" src="https://ssc.adm.ubc.ca/static/shared/scripts/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript" src="https://ssc.adm.ubc.ca/static/shared/scripts/jquerypager.js"></script>
+<!--
+    <script src="https://ssc.adm.ubc.ca/static/shared/scripts/jquery.dimensions.js" type="text/javascript"></script>
+-->
+
+    <script type="text/javascript" src="https://ssc.adm.ubc.ca/static/shared/scripts/utilities.js?v=20191112221525"></script>
+    <script type="text/javascript" src="https://ssc.adm.ubc.ca/static/shared/scripts/popupMessage.js?v=20191112221525"></script>
+    <script type="text/javascript" src="https://ssc.adm.ubc.ca/static/shared/scripts/toggle.js?v=20191112221525"></script>
+    <script type="text/javascript" src="https://ssc.adm.ubc.ca/static/shared/scripts/superfish.js?v=20191112221525"></script>
+    <script type="text/javascript" src="https://ssc.adm.ubc.ca/static/shared/scripts/hoverIntent.js?v=20191112221525"></script>
+
+    <script type="text/javascript" src="https://ssc.adm.ubc.ca/static/ssc/scripts/ubc-functions.js?v=20191112221525"></script>
+    <script type="text/javascript" src="https://ssc.adm.ubc.ca/static/ssc/scripts/ubc.js?v=20191112221525"></script>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAoRs91XgpKw60K4liNrOHoBStNMhZCa0lqZKLUDgzjZGRsKl38xSnSmVmaulnWVdBLItzW4KsddHCzA"></script>
+
+    <script type="text/javascript" src="https://ssc.adm.ubc.ca/static/ubcclf/_ubc_clf/js/jquery.client.js"></script>
+    <script type="text/javascript" src="https://ssc.adm.ubc.ca/static/ubcclf/_ubc_clf/js/config.js"></script>
+    <script type="text/javascript" src="https://ssc.adm.ubc.ca/static/ubcclf/_ubc_clf/js/main.js"></script><script src="https://www.google.com/uds/?file=feeds&amp;v=1" type="text/javascript"></script>
+
+  
+  
+  <script type="text/javascript">
+    window.StudName =  "";
+    window.CurrentDate = "20/11/2019";
+    window.StudNo = "";
+
+    $(function() {
+        var isScreenLoadingOn = false;
+        $("[href$='function=Awards Inquiry']").on('click', function(event) {
+            if ( isScreenLoadingOn === true) {
+                event.preventDefault();
+            }
+            isScreenLoadingOn = true;
+            $("[href$='function=Awards Inquiry']").css({'cursor' : 'wait'});
+        });
+    });
+
+  </script>
+  
+  <script type="text/javascript" src="https://ssc.adm.ubc.ca/static/shared/scripts/sscanalytics.js?v=20191112221525"></script>
+</head>
+<body>
+
+  <div id="UbcHeaderWrapper">
+      <div id="UbcToolBarWrapper">
+          <div id="UbcToolBar" class="UbcContainer">
+              <ul id="UbcToolNav">
+                  <li><a id="UbcCampusLinks" href="http://www.ubc.ca/campuses/">Campuses</a></li>
+                  <li><a id="UbcDirectLinks" href="http://www.ubc.ca/directories/">UBC Directories</a></li>
+                  <li><a id="UbcQuickLinks" href="http://www.ubc.ca/quicklinks/">UBC Quick Links</a></li>
+                  <li class="UbcForm">
+                      <form id="UbcSearchForm" action="//www.ubc.ca/search/" method="get">
+                          <input type="text" name="q" value="" class="UbcSearchField">
+                          <input type="image" src="https://ssc.adm.ubc.ca/static/ubcclf/_ubc_clf/img/header/spacer.gif" class="UbcSearchBtn" value="Search" alt="Search">
+                      </form>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div id="UbcMegaMenuesWrapper" class="UbcContainer">
+          <div id="UbcMegaMenues" class="UbcContainer"><a href="##" class="UbcCloseBtn">[X] close</a></div>
+      </div>
+      <ul id="UbcHeader" class="UbcContainer" style="position:relative">
+          <li><h1 id="UbcLogo"><a href="http://www.ubc.ca">The University of British Columbia</a></h1></li>
+          <li class="UbcMindLink"><a href="http://www.aplaceofmind.ubc.ca/" id="UbcMindLink">a place of mind</a></li>
+          <li id="UbcHeaderLine"><a href="http://www.ubc.ca/" id="UbcHeaderLink">
+              <span>The University of British Columbia</span></a></li>
+          <li id="UbcSubUnitLineSSC">
+            <a href="" id="UbcSubUnitLink">
+                <span>Student Service Centre</span>
+            </a>
+          </li>
+          
+              <li id="student-info" style="height:26px;">
+                  <p><b>
+                    Name: </b>Aichmair, Alyssa
+                    &nbsp;&nbsp;&nbsp;<b>Student #: </b>45053254</p>
+              </li>
+          
+      </ul>
+
+      
+        
+
+
+
+
+
+
+
+
+<ul id="UbcMainNav" class="UbcContainer sf-menu">
+    <li><a href="/sscportal/servlets/SSCMain.jsp">Home</a></li>
+
+    
+
+      <!--TAB-->
+      <li class=" first-nav-item">
+	    
+        <a href="SSCMain.jsp?function=ApplicantStatus">Admissions
+        </a>
+        <!--Drop down menu items in TAB-->
+        
+            <ul>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=ApplicantStatus">Application Status</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=PersonalProfile">Personal Profile</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=AdmissionOffer">Accept Or Decline My Offer</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=ReAdmission">Re-Admission</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=SupplementalApplications">Supplemental Applications</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=DocumentUpload">Document Upload</a>
+             
+              </li>
+              
+                <li class="last-dd">
+        
+                    <a href="SSCMain.jsp?function=StudentAdmissionLetters">Letter of Admission</a>
+             
+              </li>
+              
+            </ul>
+        
+      </li>
+    
+
+      <!--TAB-->
+      <li>
+	    
+        <a href="SSCMain.jsp?function=Finances-Summary">Finances
+        </a>
+        <!--Drop down menu items in TAB-->
+        
+            <ul>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=Finances-Summary">Financial Summary</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=Finances-TuitionDetails">Tuition History</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=Finances-PayFees">Pay Fees</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=Finances-3rdParty">Sponsorship Billing</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=T2202A">T2202A Tax Form</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=T4A">T4A Tax Form</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=UPassTaxCredit">U-Pass Tax Credit</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=Awards Inquiry">Awards &amp; Financial Assistance</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=ApplyForAward">Apply for Bursary</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=UBCLoanDetails">UBC Loans and Advances</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=Finances-EditBankInfo">Banking Details - Pay Tuition And Fees</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=Finances-EditBI">Banking Details - Direct Deposit</a>
+             
+              </li>
+              
+                <li class="last-dd">
+        
+                    <a href="SSCMain.jsp?function=Upass">U-Pass Exemption</a>
+             
+              </li>
+              
+            </ul>
+        
+      </li>
+    
+
+      <!--TAB-->
+      <li>
+	    
+        <a href="/sscportal/servlets/ServiceTicketServer?service=https://courses.students.ubc.ca/cs/secure/login?serviceType=courses" target="SSCFunctionWindowCourse" schedule="">Registration
+        </a>
+        <!--Drop down menu items in TAB-->
+        
+            <ul>
+              
+                <li>
+        
+                  <a href="/sscportal/servlets/ServiceTicketServer?service=https://courses.students.ubc.ca/cs/secure/login?serviceType=courses" target="SSCFunctionWindow">Course Schedule</a>
+             
+              </li>
+              
+                <li>
+        
+                  <a href="/sscportal/servlets/ServiceTicketServer?service=https://courses.students.ubc.ca/cs/secure/login?pname=regi_sections&amp;tname=regi_sections&amp;serviceType=courses" target="SSCFunctionWindow">Registration</a>
+             
+              </li>
+              
+                <li>
+        
+                  <a href="/sscportal/servlets/SRVDegreeNavigator" target="SSCFunctionWindow">Degree Navigator-Vancouver</a>
+             
+              </li>
+              
+                <li>
+        
+                  <a href="/sscportal/servlets/SRVDegNavUBCO" target="SSCFunctionWindow">Degree Navigator-Okanagan</a>
+             
+              </li>
+              
+                <li>
+        
+                  <a href="/sscportal/servlets/ServiceTicketServer?service=https://courses.students.ubc.ca/cs/secure/login?pname=stt&amp;tname=stt&amp;serviceType=courses" target="SSCFunctionWindow">Standard Timetables</a>
+             
+              </li>
+              
+                <li>
+        
+                  <a href="/sscportal/servlets/ServiceTicketServer?service=https://courses.students.ubc.ca/cs/secure/login?pname=timetable&amp;tname=timetable&amp;serviceType=courses" target="SSCFunctionWindow">Timetable</a>
+             
+              </li>
+              
+                <li>
+        
+                  <a href="/sscportal/servlets/ServiceTicketServer?service=https://courses.students.ubc.ca/cs/secure/login?pname=spec&amp;tname=spec&amp;serviceType=courses" target="SSCFunctionWindow">Specialization List</a>
+             
+              </li>
+              
+                <li class="last-dd">
+        
+                    <a href="SSCMain.jsp?function=ChangeProgramCampus">Change of Degree Program / Campus</a>
+             
+              </li>
+              
+            </ul>
+        
+      </li>
+    
+
+      <!--TAB-->
+      <li>
+	    
+        <a href="SSCMain.jsp?function=SessGradeRpt">Grades &amp; Records
+        </a>
+        <!--Drop down menu items in TAB-->
+        
+            <ul>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=SessGradeRpt">Your Grades Summary</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=TransferCredit">Transfer Credit</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=TranscriptRequest">Order Transcripts</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=TranscriptLog">View Order History</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=ReplacementDiplomaRequest">Order Replacement Diploma/Certified Copy</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=DiplomaLog">View Diploma/Certified Copy History</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=StudentLetters">Proof of Enrolment Letters</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=StudentCompletionLetters">Program Completion Letter</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=HighSchoolRecord">High School Record</a>
+             
+              </li>
+              
+                <li class="last-dd">
+        
+                  <a href="/sscportal/servlets/ServiceTicketServer?service=https://ssc.adm.ubc.ca/webvote/servlets/login" target="SSCFunctionWindow">WebVote</a>
+             
+              </li>
+              
+            </ul>
+        
+      </li>
+    
+
+      <!--TAB-->
+      <li>
+	    
+        <a href="SSCMain.jsp?function=ExamSchedule">Exams
+        </a>
+        <!--Drop down menu items in TAB-->
+        
+            <ul>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=ExamSchedule">Exams Schedule</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=DETExam">Exam Application</a>
+             
+              </li>
+              
+                <li class="last-dd">
+        
+                    <a href="SSCMain.jsp?function=ExamConsent">LAW: Online Exam Consent</a>
+             
+              </li>
+              
+            </ul>
+        
+      </li>
+    
+
+      <!--TAB-->
+      <li>
+	    
+        <a href="/sscportal/servlets/ServiceTicketServer?service=https://secure.housing.ubc.ca/cas/sgw/cwl_auth.login_cas" target="SSCFunctionWindowHousing" &="" food="">Housing &amp; Food
+        </a>
+        <!--Drop down menu items in TAB-->
+        
+            <ul>
+              
+                <li class="last-dd">
+        
+                  <a href="/sscportal/servlets/ServiceTicketServer?service=https://secure.housing.ubc.ca/cas/sgw/cwl_auth.login_cas" target="SSCFunctionWindow">Housing &amp; Food</a>
+             
+              </li>
+              
+            </ul>
+        
+      </li>
+    
+
+      <!--TAB-->
+      <li>
+	    
+        <a href="SSCMain.jsp?function=GraduationService">Graduation
+        </a>
+        <!--Drop down menu items in TAB-->
+        
+            <ul>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=OriginalDiplomaRequest">Courier My Original Diploma</a>
+             
+              </li>
+              
+                <li class="last-dd">
+        
+                    <a href="SSCMain.jsp?function=GraduationService">Apply for Graduation</a>
+             
+              </li>
+              
+            </ul>
+        
+      </li>
+    
+
+      <!--TAB-->
+      <li>
+	    
+        <a href="SSCMain.jsp?function=ContactInfo">Personal Info
+        </a>
+        <!--Drop down menu items in TAB-->
+        
+            <ul>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=ContactInfo">Contact Summary</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=SINChange">SIN/ITN/PEN/OUAC/IB Change</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=ThirdPartyAuthorization">Third Party Authorizations</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=ImmigrationDocuments">Immigration Documents</a>
+             
+              </li>
+              
+                <li>
+        
+                  <a href="https://www.cwl.ubc.ca/myAccount/" target="SSCFunctionWindow">Password Change</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=AboriginalSelfId">Aboriginal Self-Identification</a>
+             
+              </li>
+              
+                <li>
+        
+                    <a href="SSCMain.jsp?function=CitizenshipDocuments">Citizenship &amp; PR Documents</a>
+             
+              </li>
+              
+                <li class="last-dd">
+        
+                    <a href="SSCMain.jsp?function=UbcContacts">UBC Contacts</a>
+             
+              </li>
+              
+            </ul>
+        
+      </li>
+    
+
+      <!--TAB-->
+      <li>
+	    
+        <a href="SSCMain.jsp?function=MessageCentre">Message Centre
+        </a>
+        <!--Drop down menu items in TAB-->
+        
+            <ul>
+              
+                <li class="last-dd">
+        
+                    <a href="SSCMain.jsp?function=MessageCentre">Message Centre</a>
+             
+              </li>
+              
+            </ul>
+        
+      </li>
+    
+
+	<li style="float:right"><a style="background:none" href="SSCMain.jsp?logout=logout">Log Out</a></li>
+<li class="UbcSelectedTop">&nbsp;</li></ul>
+      
+  </div>
+
+<div id="UbcContentWrapper" style="clear:both">
+      <div id="UbcContent" class="UbcContainer">
+          
+
+        <!-- LOGGED IN WITH NO ACTIVE MENU ITEM -->
+        <div id="secondary-nav-banner">
+          <h2 style="margin:20px 20px">Hi Aichmair, Alyssa, Welcome to the Student Service Centre.</h2>
+  <div id="secondary-nav" class="secondary-nav">
+    
+
+
+
+
+
+
+
+
+
+
+<ul id="tasks">
+
+			<li><a target="SSCFunctionWindow" href="/sscportal/servlets/ServiceTicketServer?service=https://courses.students.ubc.ca/cs/secure/login?serviceType=courses">Course Schedule</a></li>
+
+			<li><a href="?function=Finances-Summary">Financial Summary</a></li>
+
+			<li><a href="?function=SessGradeRpt">Your Grades Summary</a></li>
+
+			<li><a href="?function=ExamSchedule">Exams Schedule</a></li>
+
+</ul>
+
+  </div>
+          
+  <div id="banner">
+    <img src="https://ssc.adm.ubc.ca/static/ssc/images/rotating/studentImage14.jpg" width="460px" height="263px" alt="UBC Student Service Centre">
+  </div>
+          
+        </div>
+        <div style="clear:both"></div>
+        <div id="messages-alerts">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ssc.adm.ubc.ca/static/ssc/scripts/importantMessages.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div id="content">
+          
+                <div id="help-and-tutorials" class="list-vertical">
+    
+
+
+
+
+
+	<h3>Need help?</h3>
+	<ul>
+		<li><a href="#" onclick="openFAQDialog();">FAQs</a></li>
+		<li><a href="#" onclick="openFAQDialog('','VideoTutorials');">Video Tutorials</a></li>
+		<li><a href="#" onclick="openFAQDialog('','TechnicalSupport');">Technical Support</a></li>
+		<li><a target="ssc_help" href="http://www.askme.ubc.ca">Ask Me @ UBC</a></li>
+	</ul>
+  </div>
+  <div id="ssc-headlines">
+    
+
+
+
+
+
+
+
+
+
+
+<h3>SSC Headlines</h3>
+
+
+   
+
+  </div>
+
+          
+  <!-- LOGGED IN WITH NO ACTIVE MENU ITEM -->
+        </div>
+
+
+
+    </div>
+</div>
+
+  <div id="UbcBottomInfoWrapper">
+      <div id="UbcBottomInfo" class="UbcContainer">
+          <div id="UbcBottomLeft">
+              <p><a href="http://www.ubc.ca"><img src="https://ssc.adm.ubc.ca/static/ubcclf/_ubc_clf/img/footer/logo.gif" alt="a place of mind, The Univeristy of British Columbia"></a></p>
+          </div>
+          <div id="UbcBottomRight">
+            <p>
+                The University of British Columbia<br>
+                Vancouver and Kelowna, BC, Canada<br>
+                <a target="_blank" href="https://www.askme.ubc.ca/">Contact Us</a>
+            </p>
+          </div>
+      </div>
+  </div>
+  <div id="UbcUtilNavWrapper">
+      <div id="UbcUtilNav" class="UbcContainer">
+          <p><a href="http://www.emergency.ubc.ca">Emergency Procedures</a>&nbsp;|&nbsp;<a href="http://www.ubc.ca/accessibility/">Accessibility</a>&nbsp;|&nbsp;<a href="http://www.ubc.ca/about/contact/">Contact UBC</a>&nbsp;|&nbsp;<a href="http://www.ubc.ca/copyright/">© Copyright The University of British Columbia</a></p>
+      </div>
+  </div>
+  
+
+
+</body></html>
